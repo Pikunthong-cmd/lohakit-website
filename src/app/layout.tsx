@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-
 import localFont from "next/font/local";
+import Footer from "@/components/Footer";
+import Header from "@/components/home/Header";
 
 const prompt = localFont({
   src: [
@@ -44,8 +45,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="th" className={prompt.variable}>
       <body>
-        
-        {children}
+        <Header/>
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
