@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import React from "react";
 
 export default function MapContact() {
@@ -17,14 +18,25 @@ export default function MapContact() {
             loading="lazy"
           ></iframe>
         </div>
-        <div className="text-black">
-          <h3 className="text-xl font-bold mb-4">ที่ตั้งบริษัท</h3>
-          <p className="font-light">Company Location</p>
-          <hr className="border-[#2B3990] border-1 my-5"></hr>
-          <p className="font-light w-80">
-            บริษัท ทีเอ็น โลหะกิจ จำกัด เลขที่ 81 หมู่ที่ 9 ถนน344 บ้านบึง-แกลง
-            ตำบลหนองอิรุณ อำเภอบ้านบึง จ.ชลบุรี 20220
-          </p>
+        <div className="flex flex-col justify-between h-full">
+          <div>
+            <h3 className="text-xl font-bold mb-4 text-black">ที่ตั้งบริษัท</h3>
+            <p className="font-light text-black">Company Location</p>
+            <hr className="border-[#2B3990] border-1 my-5" />
+            <p className="font-light w-80 text-black">
+              บริษัท ทีเอ็น โลหะกิจ จำกัดเลขที่ 81 หมู่ที่ 9 ถนน344 บ้านบึง-แกลง
+              ตำบลหนองอิรุณ อำเภอบ้านบึง จ.ชลบุรี 20220
+            </p>
+          </div>
+          <div>
+            <a
+              href="https://maps.app.goo.gl/9wFn49FqeQWYKogg8"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button>ดูแผนที่</Button>
+            </a>
+          </div>
         </div>
       </div>
     </div>

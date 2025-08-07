@@ -45,7 +45,7 @@ export default function Header() {
         </div>
       </div>
 
-      <hr className="border-white opacity-30" />
+      <hr className="border-gray-400" />
 
       <div className="bg-[#2B3990] text-sm text-white">
         <div className="container mx-auto  flex justify-between items-center">
