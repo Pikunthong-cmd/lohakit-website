@@ -27,9 +27,11 @@ export default function Header() {
               <span>ใบเสนอราคา</span>
             </Link>
 
-            <Link href="#" className="hover:underline">
-              เข้าสู่ระบบ
-            </Link>
+            <div className="px-4 border-l border-r border-gray-400 py-1">
+              <Link href="#" className="hover:underline">
+                เข้าสู่ระบบ
+              </Link>
+            </div>
 
             <div className="relative inline-block text-left">
               <select
@@ -49,18 +51,15 @@ export default function Header() {
 
       <div className="bg-[#2B3990] text-sm text-white">
         <div className="container mx-auto  flex justify-between items-center">
-          
           <div className="space-x-2 flex items-center">
             <Image
-            src={"/images/logo.png"}
-            alt=""
-            width={70}
-            height={70}
-            className="mx-auto"
-          />
-          <p className="text-lg pl-2">
-            บริษัท ทีเอ็น โลหะกิจ จำกัด
-          </p>
+              src={"/images/logo.png"}
+              alt=""
+              width={70}
+              height={70}
+              className="mx-auto"
+            />
+            <p className="text-lg pl-2">บริษัท ทีเอ็น โลหะกิจ จำกัด</p>
           </div>
           <nav>
             <div className="p-4 space-x-2 ">

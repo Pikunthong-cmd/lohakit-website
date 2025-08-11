@@ -1,17 +1,157 @@
-import React from 'react';
-import Breadcrumb from '@/components/Breadcrumb';
-import HeadSection from './components/HeadSection';
+"use client";
+import React, { useMemo, useState } from "react";
+import { bestSellingProducts, type Product } from "@/data/bestSellingProducts";
+import HeadSection from "./components/HeadSection";
+import FilterBar from "./components/FilterBar";
+import Toolbar from "./components/Toolbar";
+import Breadcrumb from "@/components/Breadcrumb";
+import ProductCard from "@/components/home/ProductCard";
+import Button from "@/components/Button";
+import SearchBar from "./components/SearchBar"; // ใช้ใน Mobile Modal
 
-export default function ContactPage() {
+const ALL_CATEGORIES = [
+  "เหล็กกัลวาไนซ์ ชลบุรี",
+  "เหล็กเส้นกลม ชลบุรี",
+  "เหล็กข้ออ้อย ชลบุรี",
+  "เหล็กกล่องดำ ชลบุรี",
+  "เหล็กตัวซี ชลบุรี",
+  "เหล็กบีม ชลบุรี",
+  "เหล็กฉาก ชลบุรี",
+  "เหล็กตะแกรง ชลบุรี",
+  "แป๊ปประปา ชลบุรี",
+  "ร้านขายหลังคาเหล็กเมทัลชีท ชลบุรี",
+];
+
+const ALL_BRANDS = ["บริษัท ทีเอ็น โลหะกิจ จำกัด"];
+
+const productMeta: Record<string, { categories: string[]; brand: string }> = {
+  "1": { categories: ["เหล็กเส้นกลม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "2": { categories: ["เหล็กกัลวาไนซ์ ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "3": { categories: ["เหล็กข้ออ้อย ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "4": { categories: ["เหล็กกล่องดำ ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "5": { categories: ["เหล็กตัวซี ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "6": { categories: ["เหล็กบีม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "7": { categories: ["เหล็กฉาก ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "8": { categories: ["เหล็กตะแกรง ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "9": { categories: ["แป๊ปประปา ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "10": { categories: ["ร้านขายหลังคาเหล็กเมทัลชีท ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+  "11": { categories: ["เหล็กเส้นกลม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
+};
+
+export default function ProductsPage() {
+  const [query, setQuery] = useState("");
+  const [activeCategories, setActiveCategories] = useState<string[]>([]);
+  const [activeBrand, setActiveBrand] = useState<string | null>(null);
+  const [layout, setLayout] = useState<number>(5); // เผื่อใช้ต่อ ถ้าจะทำปรับคอลัมน์
+  const [visibleCount, setVisibleCount] = useState(10);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
+
+  const filtered: Product[] = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return bestSellingProducts.filter((p) => {
+      const meta = productMeta[p.id] ?? { categories: [], brand: "" };
+      const matchQuery =
+        q === "" ||
+        p.name.toLowerCase().includes(q) ||
+        p.description?.toLowerCase().includes(q);
+      const matchCategory =
+        activeCategories.length === 0 ||
+        activeCategories.some((c) => meta.categories.includes(c));
+      const matchBrand = activeBrand === null || meta.brand === activeBrand;
+      return Boolean(matchQuery && matchCategory && matchBrand);
+    });
+  }, [query, activeCategories, activeBrand]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const isAllShown = visible.length >= filtered.length;
+
   return (
-    <main className="bg-white">
-      <Breadcrumb
-        items={[
-          { label: "หน้าหลัก", href: "/" },
-          { label: "สินค้าของเรา" },
-        ]}
+    <main className="min-h-screen">
+      <Breadcrumb items={[{ label: "หน้าหลัก", href: "/" }, { label: "สินค้าของเรา" }]} />
+
+      <HeadSection
+        query={query}
+        setQuery={setQuery}
+        onMobileSearchClick={() => setShowMobileSearch(true)}
       />
-      <HeadSection/>
+
+      {/* Filters + Toolbar */}
+      <section className="w-full bg-white">
+        <div className="container mx-auto max-w-7xl px-4 py-6">
+          <FilterBar
+            categories={ALL_CATEGORIES}
+            brands={ALL_BRANDS}
+            activeCategories={activeCategories}
+            setActiveCategories={setActiveCategories}
+            activeBrand={activeBrand}
+            setActiveBrand={setActiveBrand}
+          />
+          <div className="mt-6">
+            <Toolbar layout={layout} setLayout={setLayout} total={filtered.length} />
+          </div>
+        </div>
+      </section>
+
+      {/* Catalog grid (layout แบบเดียวกับ BestSellingProducts) */}
+      <section className="py-8 sm:py-10">
+        <div className="container mx-auto max-w-7xl px-4">
+          <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
+            แคตตาล็อกออนไลน์
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            {visible.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+
+          {!isAllShown && (
+            <div className="mt-8 flex justify-center">
+              <Button onClick={() => setVisibleCount((c) => c + 10)}>
+                ดูสินค้าทั้งหมด
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Mobile Search Modal */}
+      {showMobileSearch && (
+        <div
+          className="fixed inset-0 z-50 bg-black/50 flex items-start justify-center p-4"
+          onClick={() => setShowMobileSearch(false)}
+        >
+          <div
+            className="mt-24 w-full max-w-md rounded-xl bg-white p-4 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setShowMobileSearch(false);
+              }}
+            >
+              <SearchBar
+                value={query}
+                onChange={setQuery}
+                placeholder="ค้นหาสินค้าและบริการ"
+              />
+              <div className="mt-4 flex justify-end gap-2">
+                <button type="submit" className="px-4 py-2 rounded bg-[#2b947a] text-white text-sm">
+                  ค้นหา
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowMobileSearch(false)}
+                  className="px-4 py-2 rounded bg-gray-200 text-sm"
+                >
+                  ปิด
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
