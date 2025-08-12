@@ -17,7 +17,7 @@ const services = [
 
 export default function ServiceHighlights() {
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto mt-5">
       <h2 className="text-3xl font-bold mb-10 text-black ">
          เกี่ยวกับเรา
         </h2>

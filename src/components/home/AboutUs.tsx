@@ -11,7 +11,7 @@ export default function AboutUs() {
           {/* Image Section */}
           <div>
             <Image
-              src="/images/about-home.png"
+              src="/images/aboutUs-home.png"
               alt="About Us"
               width={800}
               height={400}

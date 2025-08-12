@@ -13,7 +13,7 @@ export default function Toolbar({
       <div className="text-sm text-gray-600">
         พบสินค้า <span className="font-semibold text-gray-900">{total}</span> รายการ
       </div>
-      <div className="flex items-center gap-2">
+      {/* <div className="flex items-center gap-2">
         <span className="text-sm text-gray-600">มุมมอง:</span>
         {[2, 3, 4, 5].map((n) => (
           <button
@@ -27,7 +27,7 @@ export default function Toolbar({
             {n}x
           </button>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

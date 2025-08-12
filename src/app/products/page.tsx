@@ -7,58 +7,51 @@ import Toolbar from "./components/Toolbar";
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductCard from "@/components/home/ProductCard";
 import Button from "@/components/Button";
-import SearchBar from "./components/SearchBar"; // ใช้ใน Mobile Modal
+import SearchBar from "./components/SearchBar"; 
 
-const ALL_CATEGORIES = [
-  "เหล็กกัลวาไนซ์ ชลบุรี",
-  "เหล็กเส้นกลม ชลบุรี",
-  "เหล็กข้ออ้อย ชลบุรี",
-  "เหล็กกล่องดำ ชลบุรี",
-  "เหล็กตัวซี ชลบุรี",
-  "เหล็กบีม ชลบุรี",
-  "เหล็กฉาก ชลบุรี",
-  "เหล็กตะแกรง ชลบุรี",
-  "แป๊ปประปา ชลบุรี",
-  "ร้านขายหลังคาเหล็กเมทัลชีท ชลบุรี",
-];
+const ALL_CATEGORIES: string[] = Array.from(
+  new Set(
+    bestSellingProducts.flatMap((p) => p.category ?? [])
+  )
+).sort((a, b) => a.localeCompare(b, "th"));
 
-const ALL_BRANDS = ["บริษัท ทีเอ็น โลหะกิจ จำกัด"];
-
-const productMeta: Record<string, { categories: string[]; brand: string }> = {
-  "1": { categories: ["เหล็กเส้นกลม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "2": { categories: ["เหล็กกัลวาไนซ์ ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "3": { categories: ["เหล็กข้ออ้อย ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "4": { categories: ["เหล็กกล่องดำ ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "5": { categories: ["เหล็กตัวซี ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "6": { categories: ["เหล็กบีม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "7": { categories: ["เหล็กฉาก ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "8": { categories: ["เหล็กตะแกรง ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "9": { categories: ["แป๊ปประปา ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "10": { categories: ["ร้านขายหลังคาเหล็กเมทัลชีท ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-  "11": { categories: ["เหล็กเส้นกลม ชลบุรี"], brand: "บริษัท ทีเอ็น โลหะกิจ จำกัด" },
-};
+const ALL_BRANDS: string[] = Array.from(
+  new Set(
+    bestSellingProducts
+      .map((p) => p.brand)
+      .filter((b): b is string => Boolean(b))
+  )
+).sort((a, b) => a.localeCompare(b, "th"));
 
 export default function ProductsPage() {
   const [query, setQuery] = useState("");
   const [activeCategories, setActiveCategories] = useState<string[]>([]);
   const [activeBrand, setActiveBrand] = useState<string | null>(null);
-  const [layout, setLayout] = useState<number>(5); // เผื่อใช้ต่อ ถ้าจะทำปรับคอลัมน์
+  const [layout, setLayout] = useState<number>(5);
   const [visibleCount, setVisibleCount] = useState(10);
   const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   const filtered: Product[] = useMemo(() => {
     const q = query.trim().toLowerCase();
+
     return bestSellingProducts.filter((p) => {
-      const meta = productMeta[p.id] ?? { categories: [], brand: "" };
+      const categories = p.category ?? [];
+      const brand = p.brand ?? "";
+      const keywords = p.keywords ?? [];
+
       const matchQuery =
         q === "" ||
         p.name.toLowerCase().includes(q) ||
-        p.description?.toLowerCase().includes(q);
+        (p.description ?? "").toLowerCase().includes(q) ||
+        keywords.some((k) => k.toLowerCase().includes(q));
+
       const matchCategory =
         activeCategories.length === 0 ||
-        activeCategories.some((c) => meta.categories.includes(c));
-      const matchBrand = activeBrand === null || meta.brand === activeBrand;
-      return Boolean(matchQuery && matchCategory && matchBrand);
+        activeCategories.some((c) => categories.includes(c));
+
+      const matchBrand = activeBrand === null || brand === activeBrand;
+
+      return matchQuery && matchCategory && matchBrand;
     });
   }, [query, activeCategories, activeBrand]);
 
@@ -75,7 +68,6 @@ export default function ProductsPage() {
         onMobileSearchClick={() => setShowMobileSearch(true)}
       />
 
-      {/* Filters + Toolbar */}
       <section className="w-full bg-white">
         <div className="container mx-auto max-w-7xl px-4 py-6">
           <FilterBar
@@ -92,7 +84,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Catalog grid (layout แบบเดียวกับ BestSellingProducts) */}
       <section className="py-8 sm:py-10">
         <div className="container mx-auto max-w-7xl px-4">
           <h2 className="mb-6 text-center text-2xl font-bold text-gray-900 sm:text-3xl">
@@ -115,7 +106,6 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* Mobile Search Modal */}
       {showMobileSearch && (
         <div
           className="fixed inset-0 z-50 bg-black/50 flex items-start justify-center p-4"
