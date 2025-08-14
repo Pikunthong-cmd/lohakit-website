@@ -24,6 +24,7 @@ export default function Banner({
           
           <div className="relative block sm:hidden w-full aspect-[18/9]">
             <Image
+            unoptimized
               src={mobileImageUrl}
               alt={alt}
               fill
@@ -35,6 +36,7 @@ export default function Banner({
           
           <div className="relative hidden sm:block w-full aspect-[35/9]">
             <Image
+            unoptimized
               src={imageUrl}
               alt={alt}
               fill
@@ -48,6 +50,7 @@ export default function Banner({
         
         <div className="relative w-full aspect-[16/9] sm:aspect-[16/9]">
           <Image
+            unoptimized
             src={imageUrl}
             alt={alt}
             fill
