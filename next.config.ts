@@ -2,7 +2,7 @@
 const isProd = process.env.NODE_ENV === 'production'
 
 // ใช้ชื่อ repo ของคุณ
-const repo = 'lohakit-website'
+const repo = 'https://pikunthong-cmd.github.io/lohakit-website/'
 
 const nextConfig = {
   output: 'export',               // ใช้ next export -> ออกมาเป็นโฟลเดอร์ out
