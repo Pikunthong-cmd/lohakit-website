@@ -9,7 +9,10 @@ export default function Home() {
   return (
     <div>
       {/* <Header /> */}
-      <Banner imageUrl="/images/banner-home.png" />
+      <Banner 
+      imageUrl="/images/banner-home.png" 
+      mobileImageUrl="/images/banner-mobile.png"
+      alt="TN Lohakit"/>
       <WhyChooseUs />
       <AboutUs/>
       <BestSellingProducts />

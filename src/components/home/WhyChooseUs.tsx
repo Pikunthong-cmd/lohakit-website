@@ -3,50 +3,65 @@
 import { IconBizMan, IconGearMan, IconRankMan, IconRecycle } from "../icons";
 
 export default function WhyChooseUs() {
+  const cards = [
+    {
+      icon: <IconBizMan width={55} height={55} />,
+      title: "เป็นผู้ค้าเหล็กรายใหญ่ที่มีวัสดุครบวงจร",
+      desc:
+        "ทีเอ็น โลหะกิจ ครบ จบ ที่เดียว เราเป็นผู้ค้าเหล็กรายใหญ่ของชลบุรี มีเหล็กชนิดต่างๆ ครอบคลุมงานก่อสร้าง",
+    },
+    {
+      icon: <IconGearMan width={55} height={55} />,
+      title: "ครอบคลุมงานก่อสร้างงาน ช่างครบวงจร",
+      desc:
+        "จำหน่ายอุปกรณ์ประกอบงานเหล็ก เครื่องมืองานเหล็กสำหรับช่าง เลือกใช้ตามความเหมาะสม",
+    },
+    {
+      icon: <IconRankMan width={55} height={55} />,
+      title: "เป็นที่ 1 เรื่องเหล็กคุณภาพ",
+      desc:
+        "เราจำหน่ายเหล็กคุณภาพมาตรฐาน ในราคาที่เหมาะสม มีเหล็กเส้นก่อสร้าง และเหล็กรูปพรรณทุกชนิดขายปลีก-ส่ง",
+    },
+    {
+      icon: <IconRecycle width={55} height={55} />,
+      title: "มีบริการเปลี่ยนคืนสินค้า",
+      desc: "มีบริการส่งถึงหน้างาน รวมถึงบริการเปลี่ยน–คืนสินค้า",
+    },
+  ];
+
   return (
-    <section className="w-full bg-white ">
-      <div className="container mx-auto  justify-between py-12">
-        <h2 className=" pb-12 text-3xl font-bold mb-6 text-black text-center">
+    <section className="w-full bg-white">
+      <div className="container mx-auto px-4 py-12">
+        <h2 className="pb-8 text-center text-2xl sm:text-3xl font-bold text-black">
           ทำไม ทีเอ็น โลหะกิจ ถึงเป็นร้านเหล็กขายดี
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-4">
-          <div className="p-6 shadow bg-[#2B3990]">
-            <IconBizMan width={55} height={55} />
-            <h3 className="text-xl font-semibold my-3">
-              เป็นผู้ค้าเหล็กรายใหญ่ที่มีวัสดุครบวงจร
-            </h3>
-            <p>
-              ทีเอ็น โลหะกิจ ครบ จบ ที่เดียว เราเป็นผู้ค้าเหล็กรายใหญ่ของชลบุรี
-              มีเหล็กชนิดต่างๆ ครอบคลุมงานก่อสร้าง
-            </p>
-          </div>
-          <div className="p-6 shadow bg-[#131837]">
-            <IconGearMan width={55} height={55} />
-            <h3 className="text-xl font-semibold my-3">
-              ครอบคลุมงานก่อสร้างงาน ช่างครบวงจร
-            </h3>
-            <p>
-              จำหน่าย อุปกรณ์ประกอบการทำงานเหล็ก เครื่องมืองานเหล็กรองรับสำหรับช่างเหล็ก เลือกใช้ตามความเหมาะสม
-            </p>
-          </div>
-          <div className="p-6 shadow bg-[#2B3990]">
-            <IconRankMan width={55} height={55} />
-            <h3 className="text-xl font-semibold my-3">
-              เป็นที่ 1 เรื่องเหล็กคุณภาพ
-            </h3>
-            <p>
-              เราจำหน่ายเหล็กคุณภาพมาตรฐาน ในราคาที่เหมาะสม เรามีเหล็กเส้นก่อสร้าง เหล็กรูปพรรณทุกชนิดขายปลีก-ส่ง 
-            </p>
-          </div>
-          <div className="p-6 shadow bg-[#131837]">
-            <IconRecycle width={55} height={55} />
-            <h3 className="text-xl font-semibold my-3">
-              มีบริการเปลี่ยนคืนสินค้า
-            </h3>
-            <p>
-              มีบริการส่งถึงหน้างาน รวมถึงมีบริการเปลี่ยน คืน สินค้า
-            </p>
-          </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {cards.map((card, idx) => {
+            const baseBg =
+              idx === 2
+                ? "bg-[#131837]"
+                : idx === 3
+                ? "bg-[#2B3990]"
+                : idx % 2 === 0
+                ? "bg-[#2B3990]"
+                : "bg-[#131837]";
+            const lgBg = idx % 2 === 0 ? "lg:bg-[#2B3990]" : "lg:bg-[#131837]";
+
+            return (
+              <div
+                key={idx}
+                className={`p-6 shadow text-white ${baseBg} ${lgBg}`}
+              >
+                {card.icon}
+                <h3 className="text-base sm:text-lg lg:text-xl font-semibold my-3">
+                  {card.title}
+                </h3>
+                <p className="text-xs sm:text-sm lg:text-base text-white/90">
+                  {card.desc}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
