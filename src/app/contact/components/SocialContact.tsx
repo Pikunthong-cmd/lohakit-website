@@ -4,7 +4,7 @@ import { IconFacbook, IconLine, IconWechat } from "@/components/icons";
 
 export default function SocialContact() {
   return (
-    <div className="bg-white container mx-auto my-10">
+    <div className="bg-white container mx-auto my-10 px-4 mt-10">
       <h2 className="text-3xl lg:text-3xl font-extrabold  leading-snug text-black mb-10">
         โซเชียลมีเดีย
       </h2>

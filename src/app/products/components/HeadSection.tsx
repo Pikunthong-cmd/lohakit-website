@@ -11,7 +11,7 @@ export default function HeadSection({
   onMobileSearchClick?: () => void;
 }) {
   return (
-    <section className="container mx-auto max-w-7xl px-4 py-6">
+    <section className="container mx-auto px-4 py-4 sm:py-6">
       <div className="grid grid-cols-2 items-center gap-4">
         <div className="order-2 sm:order-2 flex gap-2">
           <div className="hidden sm:block w-1/2 ml-auto">

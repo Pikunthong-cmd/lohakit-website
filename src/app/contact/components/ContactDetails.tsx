@@ -6,7 +6,7 @@ import { IoIosTime } from "react-icons/io";
 
 export default function ContactDetails() {
   return (
-    <div className="bg-[#F8F9FF] py-10 my-20">
+    <div className="bg-[#F8F9FF] py-10 my-20 container mx-auto px-4 mt-10">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {/* LEFT: Contact Info */}

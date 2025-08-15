@@ -68,7 +68,7 @@ export default function ProductsPage() {
         onMobileSearchClick={() => setShowMobileSearch(true)}
       />
 
-      <section className="w-full bg-white">
+      <section className="container mx-auto px-4 py-4 sm:py-6">
         <div className="container mx-auto max-w-7xl px-4 py-6">
           <FilterBar
             categories={ALL_CATEGORIES}

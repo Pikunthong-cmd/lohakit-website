@@ -89,12 +89,12 @@ export default async function ProductDetailPage(
       {/* Details */}
       <section className="container mx-auto max-w-7xl px-4 pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-12">
             <DetailSection product={product} />
           </div>
-          <div className="lg:col-span-4">
+          {/* <div className="lg:col-span-4">
             <FeatureIcons />
-          </div>
+          </div> */}
           <div className="lg:col-span-12">
             <ServiceHighlights />
           </div>
