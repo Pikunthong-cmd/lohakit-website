@@ -84,7 +84,7 @@ export default function Header() {
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Link href="/" aria-label="ไปหน้าหลัก">
-              <Image
+              <BaseImage
                 src={"/images/logo.png"}
                 alt="TN Lohakit Logo"
                 width={70}
@@ -138,7 +138,7 @@ export default function Header() {
             {/* Header panel */}
             <div className="flex items-center justify-between px-4 py-4 border-b">
               <div className="flex items-center gap-2">
-                <Image src="/images/logo.png" alt="TN Lohakit Logo" width={40} height={40} />
+                <BaseImage src="/images/logo.png" alt="TN Lohakit Logo" width={40} height={40} />
                 <span className="font-semibold text-[#2B3990]">TN LOHAKIT</span>
               </div>
               <button

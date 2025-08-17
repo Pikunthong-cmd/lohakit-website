@@ -107,21 +107,21 @@ export default function Strengths() {
 
         {/* Right Images */}
         <div className="relative w-full h-[500px]">
-          <Image
+          <BaseImage
             src="/images/strengths1.png"
             alt="โรงงาน"
             width={600}
             height={400}
             className="absolute top-0 right-0 w-[75%] h-auto  shadow-md z-20"
           />
-          <Image
+          <BaseImage
             src="/images/strengths3.png"
             alt="เหล็ก"
             width={600}
             height={400}
             className="absolute top-[120px] right-[80px] w-[80%] h-auto  shadow-md z-30"
           />
-          <Image
+          <BaseImage
             src="/images/strengths2.png"
             alt="โกดัง"
             width={600}

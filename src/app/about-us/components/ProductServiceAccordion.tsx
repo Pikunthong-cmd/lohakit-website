@@ -95,7 +95,7 @@ export default function ProductServiceAccordion() {
 
         {/* Right Images */}
         <div className="relative w-full h-[500px]">
-          <Image
+          <BaseImage
             src="/images/strengths1.png"
             alt="โรงงาน"
             width={100}

@@ -110,7 +110,7 @@ export default function ContactDetails() {
 
           {/* RIGHT: Map Image */}
           <div className="relative w-full">
-            <Image
+            <BaseImage
               src="/images/map.png"
               alt="โรงงาน"
               width={100}

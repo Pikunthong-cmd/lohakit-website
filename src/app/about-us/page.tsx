@@ -13,7 +13,7 @@ export default function AboutPage() {
           { label: "เกี่ยวกับเรา" },
         ]}
       />
-      <ImageGallery />
+      <BaseImageGallery />
       <ServiceHighlights />
       <ProductServiceAccordion />
     </main>

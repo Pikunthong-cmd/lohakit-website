@@ -17,7 +17,7 @@ export default function Gallery() {
       <div className="flex gap-4 justify-center overflow-x-auto px-4">
         {galleryImages.map((src, index) => (
           <div key={index} className="min-w-[220px] md:min-w-[250px]">
-            <Image
+            <BaseImage
               src={src}
               alt={`Gallery ${index + 1}`}
               width={300}

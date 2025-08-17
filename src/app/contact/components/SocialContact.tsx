@@ -12,7 +12,7 @@ export default function SocialContact() {
         <div className="flex flex-col items-center">
           <div className="w-full h-auto relative bg-[#F8F9FF] rounded-lg shadow-lg px-6 p-10 items-center text-center">
             <div className="flex items-center justify-center mb-4">
-              <Image
+              <BaseImage
                 src="/images/facebook-icon.png"
                 alt="Facebook"
                 width={100}
@@ -36,7 +36,7 @@ export default function SocialContact() {
         <div className="flex flex-col items-center">
           <div className="w-full h-auto relative bg-[#F8F9FF] rounded-lg shadow-lg px-6 p-10 items-center text-center">
             <div className="flex items-center justify-center mb-4">
-              <Image
+              <BaseImage
                 src="/images/qr-wechat.png"
                 alt="Facebook"
                 width={100}
@@ -60,7 +60,7 @@ export default function SocialContact() {
         <div className="flex flex-col items-center">
           <div className="w-full h-auto relative bg-[#F8F9FF] rounded-lg shadow-lg px-6 p-10 items-center text-center">
             <div className="flex items-center justify-center mb-4">
-              <Image
+              <BaseImage
                 src="/images/qr-line.png"
                 alt="Facebook"
                 width={100}

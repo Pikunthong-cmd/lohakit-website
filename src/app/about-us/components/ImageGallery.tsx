@@ -13,7 +13,7 @@ export default function Gallery() {
       <div className="grid grid-cols-3 w-full">
         {images.map((src, index) => (
           <div key={index} className="relative w-full h-[400px]">
-            <Image
+            <BaseImage
               src={src}
               alt={`Gallery ${index + 1}`}
               fill

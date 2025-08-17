@@ -62,7 +62,7 @@ export default function AboutUs() {
           </div>
 
           <div className="order-2 md:order-1">
-  <Image
+  <BaseImage
     src="/images/aboutUs-home.png"
     alt="About Us"
     width={800}
