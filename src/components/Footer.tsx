@@ -1,8 +1,5 @@
 "use client";
-import { FaFacebookF, FaLinkedinIn, FaPhoneAlt } from "react-icons/fa";
-import { FiMail, FiPhone } from "react-icons/fi";
-import { GoLocation } from "react-icons/go";
-import Image from "next/image";
+import { FaPhoneAlt } from "react-icons/fa";
 import {
 
 } from 'react-icons';

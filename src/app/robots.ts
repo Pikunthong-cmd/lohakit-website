@@ -1,6 +1,12 @@
 // app/robots.ts
 import { MetadataRoute } from "next";
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pikunthong-cmd.github.io/lohakit-website";
+
+export const dynamic = "force-static";
+export const revalidate = false;
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://pikunthong-cmd.github.io/lohakit-website";
 
 export default function robots(): MetadataRoute.Robots {
   return {

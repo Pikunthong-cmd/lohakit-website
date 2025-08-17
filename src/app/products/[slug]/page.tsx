@@ -10,7 +10,6 @@ import ProductHero from "./components.tsx/ProductHero";
 import InfoBadges from "./components.tsx/InfoBadges";
 import ProductGallery from "./components.tsx/ProductGallery";
 
-
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -22,19 +21,21 @@ const SITE_URL =
   "https://pikunthong-cmd.github.io/lohakit-website";
 
 const withAbsolute = (path: string) =>
-  /^https?:\/\//i.test(path) ? path : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+  /^https?:\/\//i.test(path)
+    ? path
+    : `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
-// SEO รายหน้าสินค้า
+// ✅ SEO รายหน้าสินค้า
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const product = bestSellingProducts.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const product = bestSellingProducts.find((p) => p.slug === slug);
   if (!product) return {};
 
   const title = `${product.name} | TN Lohakit`;
   const description =
-    product.description?.slice(0, 160) ||
-    "รายละเอียดสินค้า TN Lohakit";
+    product.description?.slice(0, 160) || "รายละเอียดสินค้า TN Lohakit";
   const canonical = `/products/${product.slug}`;
   const ogImage = withAbsolute(product.image || "/images/og-cover.jpg");
 
@@ -58,10 +59,11 @@ export async function generateMetadata(
   };
 }
 
-export default function ProductDetailPage(
-  { params }: { params: { slug: string } }
+// ✅ Page Component ต้อง await params เช่นกัน
+export default async function ProductDetailPage(
+  { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = params;
+  const { slug } = await params;
   const product = bestSellingProducts.find((p) => p.slug === slug);
   if (!product) return notFound();
 
@@ -122,7 +124,9 @@ export default function ProductDetailPage(
 
       <section className="border-b bg-[#f7f8fc]">
         <div className="container mx-auto max-w-7xl px-4 py-3">
-          <h2 className="text-xl sm:text-2xl font-extrabold text-black">แคตตาล็อกออนไลน์</h2>
+          <h2 className="text-xl sm:text-2xl font-extrabold text-black">
+            แคตตาล็อกออนไลน์
+          </h2>
         </div>
       </section>
 
@@ -132,7 +136,9 @@ export default function ProductDetailPage(
             <ProductGallery image={product.image} name={product.name} />
           </div>
           <div className="lg:col-span-6 mt-5">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-black">{product.name}</h1>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-black">
+              {product.name}
+            </h1>
             <InfoBadges
               category={product.category ?? []}
               brand={product.brand ?? "-"}
