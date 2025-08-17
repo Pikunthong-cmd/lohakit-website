@@ -2,13 +2,25 @@ import { Product } from "@/data/bestSellingProducts";
 import Link from "next/link";
 import Button from "../Button";
 
+// helper เติม prefix เฉพาะตอนโปรดักชัน
+const p = (path: string) => {
+  const base = process.env.NODE_ENV === "production" ? "/lohakit-website" : "";
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  // ข้าม URL เต็ม
+  if (/^https?:\/\//i.test(path) || path.startsWith("//")) return path;
+  return `${base}${normalized}`;
+};
+
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/products/${product.slug}`}>
-      <div className="p-4 shadow hover:shadow-lg transition">
+      <div className="p-4 shadow hover:shadow-lg transition ">
+        {/* ใช้ aspect ratio ให้ responsive และไม่พึ่ง h-30 */}
         <div
-          className="h-30 bg-gray-200 mb-4 bg-cover bg-center"
-          style={{ backgroundImage: `url(${product.image})` }}
+          className="relative w-full aspect-[4/3] mb-4  overflow-hidden bg-gray-200 bg-center bg-cover"
+          style={{ backgroundImage: `url('${p(product.image)}')` }}
+          aria-label={product.name}
+          role="img"
         />
         <h3 className="text-lg text-start font-semibold text-black">{product.name}</h3>
         <hr className="my-2" />
