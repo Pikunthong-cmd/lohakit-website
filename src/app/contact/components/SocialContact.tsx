@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import { IconFacbook, IconLine, IconWechat } from "@/components/icons";
+import BaseImage from "@/components/BaseImage";
 
 export default function SocialContact() {
   return (

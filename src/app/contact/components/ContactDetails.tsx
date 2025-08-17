@@ -1,8 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
+import BaseImage from "@/components/BaseImage";
 
 export default function ContactDetails() {
   return (
@@ -112,7 +112,7 @@ export default function ContactDetails() {
           <div className="relative w-full">
             <BaseImage
               src="/images/map.png"
-              alt="โรงงาน"
+              alt="factory"
               width={100}
               height={400}
               className="w-full h-full object-cover shadow-lg"

@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import BaseImage from "@/components/BaseImage";
 import { useState } from "react";
 
 const items = [

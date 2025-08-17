@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import BaseImage from "@/components/BaseImage";
 
 export default function ProductGallery({ image, name }: { image: string; name: string }) {
   return (

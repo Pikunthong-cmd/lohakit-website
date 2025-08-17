@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { PiClipboardText } from "react-icons/pi";
 import NavButton from "../NavButton";
 import { usePathname } from "next/navigation";
+import BaseImage from "../BaseImage";
 
 export default function Header() {
   const [language, setLanguage] = useState("TH");

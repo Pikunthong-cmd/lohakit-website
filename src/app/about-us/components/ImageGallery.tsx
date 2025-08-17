@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import BaseImage from "@/components/BaseImage";
 
 const images = [
   "/images/strengths2.png",

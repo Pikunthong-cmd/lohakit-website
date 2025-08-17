@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import BaseImage from "../BaseImage";
 
 const galleryImages = [
   "/images/gallery1.png",

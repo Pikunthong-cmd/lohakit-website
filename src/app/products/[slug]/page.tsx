@@ -8,7 +8,6 @@ import ProductGallery from "./components.tsx/ProductGallery";
 import ProductHero from "./components.tsx/ProductHero";
 import InfoBadges from "./components.tsx/InfoBadges";
 import DetailSection from "./components.tsx/DetailSection";
-import FeatureIcons from "./components.tsx/FeatureIcons";
 import RecommendSection from "./components.tsx/RecommendSection";
 import ServiceHighlights from "@/app/about-us/components/ServiceHighlights";
 

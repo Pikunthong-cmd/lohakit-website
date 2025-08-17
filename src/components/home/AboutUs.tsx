@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
 import { IconCurrect } from "../icons";
 import Button from "../Button";
+import BaseImage from "../BaseImage";
 
 export default function AboutUs() {
   return (
@@ -62,17 +62,16 @@ export default function AboutUs() {
           </div>
 
           <div className="order-2 md:order-1">
-  <BaseImage
-    src="/images/aboutUs-home.png"
-    alt="About Us"
-    width={800}
-    height={450}
-    className="w-full h-auto object-cover shadow-md"
-    priority
-    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
-  />
-</div>
-
+            <BaseImage
+              src="/images/aboutUs-home.png"
+              alt="About Us"
+              width={800}
+              height={450}
+              className="w-full h-auto object-cover shadow-md"
+              priority
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
+            />
+          </div>
         </div>
       </div>
     </section>

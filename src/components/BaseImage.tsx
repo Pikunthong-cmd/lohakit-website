@@ -1,3 +1,4 @@
+"use client";
 import Image, { ImageProps } from "next/image";
 
 const prefix = process.env.NODE_ENV === "production" ? "/lohakit-website" : "";
@@ -12,13 +13,15 @@ function withPrefix(src: string) {
 }
 
 export default function BaseImage(props: ImageProps) {
-  const { src, ...rest } = props;
+  const { src, alt, ...rest } = props;
+  const finalSrc = typeof src === "string" ? withPrefix(src) : src;
+
   return (
     <Image
       {...rest}
-      src={typeof src === "string" ? withPrefix(src) : src}
+      src={finalSrc as any}
+      alt={alt ?? ""}
       unoptimized
-      loader={({ src }) => withPrefix(src)}
     />
   );
 }
