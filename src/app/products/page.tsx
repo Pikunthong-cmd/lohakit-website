@@ -9,6 +9,7 @@ import ProductCard from "@/components/home/ProductCard";
 import Button from "@/components/Button";
 import SearchBar from "./components/SearchBar"; 
 
+
 const ALL_CATEGORIES: string[] = Array.from(
   new Set(
     bestSellingProducts.flatMap((p) => p.category ?? [])
@@ -22,6 +23,7 @@ const ALL_BRANDS: string[] = Array.from(
       .filter((b): b is string => Boolean(b))
   )
 ).sort((a, b) => a.localeCompare(b, "th"));
+
 
 export default function ProductsPage() {
   const [query, setQuery] = useState("");

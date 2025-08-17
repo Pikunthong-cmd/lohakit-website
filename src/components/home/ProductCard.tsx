@@ -14,10 +14,10 @@ const p = (path: string) => {
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link href={`/products/${product.slug}`}>
-      <div className="p-4 shadow hover:shadow-lg transition ">
+      <div className="p-3 shadow hover:shadow-lg transition ">
         {/* ใช้ aspect ratio ให้ responsive และไม่พึ่ง h-30 */}
         <div
-          className="relative w-full aspect-[4/3] mb-4  overflow-hidden bg-gray-200 bg-center bg-cover"
+          className="relative w-full aspect-[1/1] mb-4  overflow-hidden bg-gray-200 bg-center bg-cover"
           style={{ backgroundImage: `url('${p(product.image)}')` }}
           aria-label={product.name}
           role="img"

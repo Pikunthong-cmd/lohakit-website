@@ -28,7 +28,7 @@ export default function Footer() {
             วันจันทร์ - วันเสาร์ เวลา 08:00 น. - 17.00 น.
           </p>
 
-          <div className="md:w-1/3">
+          {/* <div className="md:w-1/3">
             
             <div className="flex gap-3 mt-3">
               <a
@@ -56,7 +56,7 @@ export default function Footer() {
                 <FaXTwitter />
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Contact Info */}

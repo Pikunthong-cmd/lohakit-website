@@ -5,6 +5,13 @@ import Gallery from "@/components/home/Gallery";
 import Strengths from "@/components/home/Strengths";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 
+export const metadata = {
+  title: "ร้านขายเหล็กบ้านบึง ชลบุรี | เหล็กครบ จัดส่งไว",
+  description:
+    "เหล็กกล่อง เหล็กแผ่น เหล็กบีม เหล็กกัลวาไนซ์ บริการจัดส่งทั่วบ้านบึง-ชลบุรี",
+  alternates: { canonical: "/" },
+};
+
 
 export default function Home() {
   return (

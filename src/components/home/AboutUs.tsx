@@ -58,7 +58,10 @@ export default function AboutUs() {
               ))}
             </div>
 
-            <Button className="mt-6 sm:mt-8">เกี่ยวกับเรา</Button>
+            <a href="/about-us">
+                <Button className="mt-6 sm:mt-8">เกี่ยวกับเรา</Button>
+            </a>
+            
           </div>
 
           <div className="order-2 md:order-1">
