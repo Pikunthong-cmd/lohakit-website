@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import BaseImage from "../BaseImage";
 
 type BannerProps = {
   imageUrl: string;
@@ -23,8 +23,7 @@ export default function Banner({
         <>
           
           <div className="relative block sm:hidden w-full aspect-[18/9]">
-            <Image
-            unoptimized
+            <BaseImage
               src={mobileImageUrl}
               alt={alt}
               fill
@@ -35,8 +34,7 @@ export default function Banner({
           </div>
           
           <div className="relative hidden sm:block w-full aspect-[35/9]">
-            <Image
-            unoptimized
+            <BaseImage
               src={imageUrl}
               alt={alt}
               fill
@@ -49,8 +47,7 @@ export default function Banner({
       ) : (
         
         <div className="relative w-full aspect-[16/9] sm:aspect-[16/9]">
-          <Image
-            unoptimized
+          <BaseImage
             src={imageUrl}
             alt={alt}
             fill

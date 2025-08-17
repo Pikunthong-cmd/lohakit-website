@@ -5,6 +5,7 @@ import Gallery from "@/components/home/Gallery";
 import Strengths from "@/components/home/Strengths";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 
+
 export default function Home() {
   return (
     <div>
