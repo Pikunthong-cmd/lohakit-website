@@ -1,27 +1,22 @@
 "use client";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps, StaticImageData } from "next/image";
 
 const prefix = process.env.NODE_ENV === "production" ? "/lohakit-website" : "";
 
 function withPrefix(src: string) {
   if (!src) return src;
-  // ถ้าเป็น URL เต็ม เช่น http:// หรือ https:// → ไม่ต้องเติม prefix
-  if (/^https?:\/\//i.test(src) || src.startsWith("//")) return src;
-  // ให้แน่ใจว่ามี / ข้างหน้า
+  if (/^https?:\/\//i.test(src) || src.startsWith("//")) return src; // ข้าม URL เต็ม
   const normalized = src.startsWith("/") ? src : `/${src}`;
+  if (prefix && normalized.startsWith(`${prefix}/`)) return normalized; // กันเติมซ้ำ
   return `${prefix}${normalized}`;
 }
 
-export default function BaseImage(props: ImageProps) {
-  const { src, alt, ...rest } = props;
-  const finalSrc = typeof src === "string" ? withPrefix(src) : src;
+// ตัด loader ทิ้งตั้งแต่ชนิด จะได้ไม่มีใครส่งเข้ามา
+type SafeImageProps = Omit<ImageProps, "loader"> & {
+  src: string | StaticImageData;
+};
 
-  return (
-    <Image
-      {...rest}
-      src={finalSrc as any}
-      alt={alt ?? ""}
-      unoptimized
-    />
-  );
+export default function BaseImage({ src, alt, ...rest }: SafeImageProps) {
+  const finalSrc = typeof src === "string" ? withPrefix(src) : src;
+  return <Image {...rest} src={finalSrc} alt={alt ?? ""} unoptimized />;
 }
