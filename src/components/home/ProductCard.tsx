@@ -22,7 +22,7 @@ export default function ProductCard({ product }: { product: Product }) {
           aria-label={product.name}
           role="img"
         />
-        <h3 className="text-lg text-start font-semibold text-black">{product.name}</h3>
+        <h3 className="text-lg text-start font-semibold text-black line-clamp-1">{product.name}</h3>
         <hr className="my-2" />
         <p className="text-sm text-gray-600 text-start line-clamp-3">
           {product.description || "ไม่มีรายละเอียดเพิ่มเติม"}
