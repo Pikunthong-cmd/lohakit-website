@@ -34,8 +34,15 @@ export async function generateMetadata(
   if (!product) return {};
 
   const title = `${product.name} | TN Lohakit`;
+
+  // ✅ แก้ตรงนี้
+  const rawDescription = Array.isArray(product.description)
+    ? product.description.join(" ")
+    : product.description;
+
   const description =
-    product.description?.slice(0, 160) || "รายละเอียดสินค้า TN Lohakit";
+    rawDescription?.slice(0, 160) || "รายละเอียดสินค้า TN Lohakit";
+
   const canonical = `/products/${product.slug}`;
   const ogImage = withAbsolute(product.image || "/images/og-cover.jpg");
 
@@ -58,6 +65,7 @@ export async function generateMetadata(
     },
   };
 }
+
 
 // ✅ Page Component ต้อง await params เช่นกัน
 export default async function ProductDetailPage(

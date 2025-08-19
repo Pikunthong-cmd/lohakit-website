@@ -34,28 +34,38 @@ export default function ProductsPage() {
   const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   const filtered: Product[] = useMemo(() => {
-    const q = query.trim().toLowerCase();
+  const q = query.trim().toLowerCase();
 
-    return bestSellingProducts.filter((p) => {
-      const categories = p.category ?? [];
-      const brand = p.brand ?? "";
-      const keywords = p.keywords ?? [];
+  type Description = string | string[]; 
 
-      const matchQuery =
-        q === "" ||
-        p.name.toLowerCase().includes(q) ||
-        (p.description ?? "").toLowerCase().includes(q) ||
-        keywords.some((k) => k.toLowerCase().includes(q));
+  function descToText(desc?: Description): string {
+    if (!desc) return "";
+    return Array.isArray(desc) ? desc.join(" ") : desc;
+  }
 
-      const matchCategory =
-        activeCategories.length === 0 ||
-        activeCategories.some((c) => categories.includes(c));
+  return bestSellingProducts.filter((p) => {
+    const categories = p.category ?? [];
+    const brand = p.brand ?? "";
+    const keywords = p.keywords ?? [];
 
-      const matchBrand = activeBrand === null || brand === activeBrand;
+    const descText = descToText(p.description).toLowerCase();
 
-      return matchQuery && matchCategory && matchBrand;
-    });
-  }, [query, activeCategories, activeBrand]);
+    const matchQuery =
+      q === "" ||
+      p.name.toLowerCase().includes(q) ||
+      descText.includes(q) ||
+      keywords.some((k) => k.toLowerCase().includes(q));
+
+    const matchCategory =
+      activeCategories.length === 0 ||
+      activeCategories.some((c) => categories.includes(c));
+
+    const matchBrand = activeBrand === null || brand === activeBrand;
+
+    return matchQuery && matchCategory && matchBrand;
+  });
+}, [query, activeCategories, activeBrand]);
+
 
   const visible = filtered.slice(0, visibleCount);
   const isAllShown = visible.length >= filtered.length;
