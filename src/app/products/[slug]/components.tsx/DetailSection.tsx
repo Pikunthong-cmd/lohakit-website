@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import type { Product } from "@/data/bestSellingProducts";
+import BaseImage from "@/components/BaseImage";
 
 type Variant = NonNullable<Product["variants"]>[number];
 
@@ -25,16 +26,8 @@ const METALSHEET_COLORS: { name: string; hex: string; texture?: boolean }[] = [
   { name: "ฟ้า", hex: "#4D7BE4" },
   { name: "ครีม", hex: "#DBD7C0" },
   { name: "ขาว", hex: "#E5E5ED" },
-  { name: "อลูซิงค์*", hex: "#d9d9d9" }, // ทำเอฟเฟ็กต์ลายแปรงด้วย bg-gradient ถ้าต้องการ
+  { name: "อลูซิงค์*", hex: "#d9d9d9" },
 ];
-
-function toLines(text: string): string[] {
-  // แปลง string ยาว ๆ ที่มี \n ให้กลายเป็น array ของบรรทัด
-  return text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-}
 
 export default function DetailSection({ product }: { product: Product }) {
   const hasVariants = (product.variants?.length ?? 0) > 0;
@@ -93,7 +86,7 @@ export default function DetailSection({ product }: { product: Product }) {
                   >
                     {thumb && (
                       <span className="relative w-20 h-20 overflow-hidden rounded-md bg-gray-100">
-                        <Image
+                        <BaseImage
                           src={thumb}
                           alt={v.name}
                           fill
@@ -124,7 +117,7 @@ export default function DetailSection({ product }: { product: Product }) {
                         key={idx}
                         className="relative w-full aspect-square overflow-hidden rounded-lg"
                       >
-                        <Image
+                        <BaseImage
                           src={src}
                           alt={`${activeVariant.name} - รูปที่ ${idx + 1}`}
                           fill
