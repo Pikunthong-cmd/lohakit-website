@@ -4,10 +4,12 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import Header from "@/components/home/Header";
+import FloatingLineButton from "@/components/FloatingLineButton";
+import Script from "next/script";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://pikunthong-cmd.github.io/lohakit-website";
+  "https://tnlohakit.com/";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -129,11 +131,29 @@ function OrgJsonLd() {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="th" className={prompt.variable}>
+      <head>
+        {/* GA4 Script */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=G-M6GVC2DF17`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M6GVC2DF17', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+      </head>
       <body>
         <OrgJsonLd />
         <Header />
         <main>{children}</main>
         <Footer />
+        <FloatingLineButton />
       </body>
     </html>
   );

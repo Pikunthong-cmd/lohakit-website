@@ -4,7 +4,7 @@ import Button from "../Button";
 
 // helper เติม prefix เฉพาะตอนโปรดักชัน
 const p = (path: string) => {
-  const base = process.env.NODE_ENV === "production" ? "/lohakit-website" : "";
+  const base = process.env.NODE_ENV === "production" ? "" : "";
   const normalized = path.startsWith("/") ? path : `/${path}`;
   // ข้าม URL เต็ม
   if (/^https?:\/\//i.test(path) || path.startsWith("//")) return path;

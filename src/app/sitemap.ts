@@ -7,7 +7,7 @@ export const revalidate = false;
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://pikunthong-cmd.github.io/lohakit-website";
+  "https://tnlohakit.com/";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

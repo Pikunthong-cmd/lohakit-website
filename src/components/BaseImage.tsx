@@ -1,7 +1,7 @@
 "use client";
 import Image, { ImageProps, StaticImageData } from "next/image";
 
-const prefix = process.env.NODE_ENV === "production" ? "/lohakit-website" : "";
+const prefix = process.env.NODE_ENV === "production" ? "" : "";
 
 function withPrefix(src: string) {
   if (!src) return src;

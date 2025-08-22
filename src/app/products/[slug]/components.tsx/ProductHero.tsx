@@ -77,18 +77,22 @@ export default function ProductHero({ product }: { product: Product }) {
   const open = (href: string) => window.open(href, "_blank", "noopener,noreferrer");
   const doPrint = () => window.print();
 
+  const handleClick = () => {
+    window.open("https://line.me/R/ti/p/@tnlohakit", "_blank");
+  };
+
   return (
     <div>
       {/* CTA */}
       <div className=" flex flex-col sm:flex-row gap-3 mt-5">
-        <button
+        {/* <button
           className={`border-[#FBD905] border-2 text-black text-sm md:text-base px-10 py-3 transition-colors duration-200 font-medium cursor-pointer
         hover:bg-[#FBD905] hover:text-white 
         active:bg-[#FBD905] active:text-white`}
         >
           ขอรายละเอียด
-        </button>
-        <Button>ขอใบเสนอราคา</Button>
+        </button> */}
+        <Button onClick={handleClick}>ขอรายละเอียดเพิ่มเติม</Button>
       </div>
 
       {/* Share */}

@@ -18,7 +18,7 @@ export function generateStaticParams() {
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://pikunthong-cmd.github.io/lohakit-website";
+  "https://tnlohakit.com/";
 
 const withAbsolute = (path: string) =>
   /^https?:\/\//i.test(path)
