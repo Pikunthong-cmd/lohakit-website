@@ -4,6 +4,14 @@ import { IconBizMan, IconGearMan, IconRankMan, IconRecycle } from "../icons";
 
 export default function WhyChooseUs() {
   const cards = [
+    
+    
+    {
+      icon: <IconRankMan width={55} height={55} />,
+      title: "เป็นที่ 1 เรื่องเหล็กคุณภาพ",
+      desc:
+        "เราจำหน่ายเหล็กคุณภาพมาตรฐาน ในราคาที่เหมาะสม มีเหล็กเส้นก่อสร้าง และเหล็กรูปพรรณทุกชนิดขายปลีก-ส่ง",
+    },
     {
       icon: <IconBizMan width={55} height={55} />,
       title: "เป็นผู้ค้าเหล็กรายใหญ่ที่มีวัสดุครบวงจร",
@@ -15,12 +23,6 @@ export default function WhyChooseUs() {
       title: "ครอบคลุมงานก่อสร้างงานช่างครบวงจร",
       desc:
         "จำหน่ายอุปกรณ์ประกอบงานเหล็ก เครื่องมืองานเหล็กสำหรับช่าง เลือกใช้ตามความเหมาะสม",
-    },
-    {
-      icon: <IconRankMan width={55} height={55} />,
-      title: "เป็นที่ 1 เรื่องเหล็กคุณภาพ",
-      desc:
-        "เราจำหน่ายเหล็กคุณภาพมาตรฐาน ในราคาที่เหมาะสม มีเหล็กเส้นก่อสร้าง และเหล็กรูปพรรณทุกชนิดขายปลีก-ส่ง",
     },
     {
       icon: <IconRecycle width={55} height={55} />,

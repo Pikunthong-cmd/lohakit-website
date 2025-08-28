@@ -16,6 +16,18 @@ const ALL_CATEGORIES: string[] = Array.from(
   )
 ).sort((a, b) => a.localeCompare(b, "th"));
 
+// export const metadata = {
+//   title: "สินค้าของเรา | เหล็กรูปพรรณ",
+//   description: "ค้นหาเหล็ก ราคาส่ง พร้อมบริการจัดส่งเหล็ก และออกใบกำกับภาษีได้",
+//   keywords: [
+//     "ร้านเหล็ก ราคาส่ง",
+//     "บริการจัดส่งเหล็ก",
+//     "ออกใบกำกับภาษีเหล็ก",
+//     "ร้านเหล็กใกล้ฉัน",
+//   ],
+//   alternates: { canonical: "/products" },
+// };
+
 const ALL_BRANDS: string[] = Array.from(
   new Set(
     bestSellingProducts
